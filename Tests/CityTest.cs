@@ -99,51 +99,53 @@ namespace AirlinePlanner
       //Assert
       Assert.Equal(testCityList, resultCategories);
     }
-    // [Fact]
-    // public void Test_AddFlight_AddsFlightToCity()
-    // {
-    //   //Arrange
-    //   DateTime? testDepartureTime = new DateTime(7, 23, 16, 0, 30, 0);
-    //   Flight testFlight = new Flight(testDepartureTime, "On Time", 0);
-    //   testFlight.Save();
-    //
-    //   City testCity = new City("Portland");
-    //   testCity.Save();
-    //
-    //   City testCity2 = new City("Chicago");
-    //   testCity2.Save();
-    //
-    //   //Act
-    //   testCity.AddFlight(testFlight);
-    //   // testCategory.AddCity(testCity2);
-    //
-    //   List<Flight> result = testCity.GetFlights();
-    //   List<Flight> testList = new List<Flight>{testFlight};
-    //
-    //   //Assert
-    //   Assert.Equal(testList, result);
-    // }
-    // [Fact]
-    // public void Test_GetCities_ReturnsAllCategoryCities()
-    // {
-    //   //Arrange
-    //   Category testCategory = new Category("Household chores");
-    //   testCategory.Save();
-    //
-    //   City testCity1 = new City("Mow the lawn");
-    //   testCity1.Save();
-    //
-    //   City testCity2 = new City("Buy plane ticket");
-    //   testCity2.Save();
-    //
-    //   //Act
-    //   testCategory.AddCity(testCity1);
-    //   List<City> savedCities = testCategory.GetCities();
-    //   List<City> testList = new List<City> {testCity1};
-    //
-    //   //Assert
-    //   Assert.Equal(testList, savedCities);
-    // }
+    [Fact]
+    public void Test_AddFlight_AddsFlightToCity()
+    {
+      //Arrange
+      DateTime testDepartureTime = new DateTime(2016, 7, 23, 0, 30, 0);
+      Flight testFlight = new Flight(testDepartureTime, "On Time", 0);
+      testFlight.Save();
+      System.Console.WriteLine(testFlight.GetFlights());
+
+      City testCity = new City("Portland");
+      testCity.Save();
+
+      City testCity2 = new City("Chicago");
+      testCity2.Save();
+
+      //Act
+      testCity.AddFlight(testFlight);
+      // testCategory.AddCity(testCity2);
+
+      List<Flight> result = testCity.GetFlights();
+      List<Flight> testList = new List<Flight>{testFlight};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+    [Fact]
+    public void Test_GetFlights_ReturnsAllFlights()
+    {
+      //Arrange
+      DateTime? testDepartureTime = new DateTime(2016, 7, 23, 0, 30, 0);
+      Flight testFlight = new Flight(testDepartureTime, "On Time", 0);
+      testFlight.Save();
+
+      City testCity1 = new City("Portland");
+      testCity1.Save();
+
+      City testCity2 = new City("Buy plane ticket");
+      testCity2.Save();
+
+      //Act
+      testCity1.AddFlight(testFlight);
+      List<Flight> savedFlights = testCity1.GetFlights();
+      List<Flight> testList = new List<Flight> {testFlight};
+
+      //Assert
+      Assert.Equal(testList, savedFlights);
+    }
 
 
     public void Dispose()
